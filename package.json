@@ -1,0 +1,22 @@
+{
+  "name": "curedent2.0",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "tsc --watch",
+    "build": "tsc",
+    "start": "node dist/app",
+    "deploy:commands": "node dist/tools/deploy-commands"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.4.2"
+  },
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.4.5",
+    "zod": "^3.22.4"
+  }
+}
