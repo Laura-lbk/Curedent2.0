@@ -1,5 +1,6 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js"
 import { PingCommand } from "./commands/ping";
+import { EmbedCommand } from "./commands/embed";
 
 // Définition d'une commande
 export type BotCommand = {
@@ -10,6 +11,7 @@ export type BotCommand = {
 // liste des commandes dispo
 export const commands: BotCommand[] = [
   PingCommand,
+  EmbedCommand,
 ];
 
 // execute la commande si elle existe

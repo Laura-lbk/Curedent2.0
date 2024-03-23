@@ -1,6 +1,7 @@
 import { Client, Events, GatewayIntentBits, Partials } from "discord.js";
 import { Env } from "./tools/environment";
 import { handleCommand } from "./command";
+import {VideoNotifications} from "./services/video-notifications"
 
 // Chargement de l'environnement
 console.log(`Starting app with [${Env.NODE_ENV}] mode`);
@@ -50,5 +51,7 @@ console.log(`Starting app with [${Env.NODE_ENV}] mode`);
   
     await client.login(Env.DISCORD_TOKEN);
     console.log("Bot connected");
+
+    //VideoNotifications();
   })();
   
