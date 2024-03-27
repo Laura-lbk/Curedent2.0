@@ -21,8 +21,34 @@ const APIEnvironment = z.object({
   CHANNEL_ID: z.string(),
 });
 
+const DataBaseEnvironment = z.object({
+  DB_HOST: z
+    .string()
+    .optional()
+    .transform((host) => {
+      if (host === undefined || host === "localhost") {
+        return "127.0.0.1";
+      } else {
+        return host;
+      }
+    }),
+  DB_NAME: z.string(),
+  DB_USER: z.string().optional(),
+  DB_PASS: z.string().optional(),
+  DB_PORT: z
+    .string()
+    .optional()
+    .transform((port) => {
+      if (port === undefined) {
+        return 27017;
+      } else {
+        return parseInt(port);
+      }
+    }),
+});
 
-const Environment = AppEnvironment.and(DiscordEnvironment).and(APIEnvironment);
+
+const Environment = AppEnvironment.and(DiscordEnvironment).and(APIEnvironment).and(DataBaseEnvironment);
 
 type Environment = z.infer<typeof Environment>;
 

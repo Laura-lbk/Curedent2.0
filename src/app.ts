@@ -6,9 +6,9 @@ require('dotenv').config({ path: path.resolve(".env") })
 
 require(".");
 
-// import DatabaseManager from './database/DatabaseManager';
-// DatabaseManager().then(()=>{
-//     require(".");
-// }).catch((e)=>{
-//     console.error(e);
-// })
+import DatabaseManager from './database/DatabaseManager';
+DatabaseManager().then(()=>{
+    require(".");
+}).catch((e)=>{
+    console.error(e);
+})

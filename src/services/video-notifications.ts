@@ -1,7 +1,9 @@
 import { SendVideoNotificationEmbed } from "~/embeds/video-notification-embed";
 import { FindLatestVideo } from "../api/find-latest-video";
+import { SendVideoNotificationMessage } from "../messages/video-notification-message";
+import { Client } from "discord.js";
 
-export async function VideoNotifications() {
+export async function VideoNotifications(readyClient: Client) {
   let latestID: string;
 
   // Toutes les 5 minutes on vérifie la dernière vidéo
@@ -14,8 +16,9 @@ export async function VideoNotifications() {
       let currentID: string = latestVideo["items"][0].id.videoId;
       if (currentID !== latestID){
         latestID = currentID;
+        console.log("nouvelle vidéo en ligne");
         // envoyer nouvelle notification de vidéo
-        SendVideoNotificationEmbed(latestVideo);
+        SendVideoNotificationMessage(latestVideo, readyClient)
       }
     }
   });

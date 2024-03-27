@@ -8,7 +8,7 @@ console.log(`Starting app with [${Env.NODE_ENV}] mode`);
 
 (async () => {
     //permet de souscrire aux services de discord
-    const client = new Client({
+     const client = new Client({
       intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
@@ -23,12 +23,12 @@ console.log(`Starting app with [${Env.NODE_ENV}] mode`);
         Partials.User,
       ],
     });
-  
+
+    client.once(Events.ClientReady, readyClient => {
+      VideoNotifications(readyClient);
+    });
+
     client.on(Events.MessageCreate, async (message) => {
-      if (message.content === "désolé du ping") {
-        //envoie avec ping
-        message.reply("pas de souci");
-      }
     });
   
     // Gestion des commandes slash
@@ -51,7 +51,9 @@ console.log(`Starting app with [${Env.NODE_ENV}] mode`);
   
     await client.login(Env.DISCORD_TOKEN);
     console.log("Bot connected");
+    
 
-    //VideoNotifications();
   })();
+ 
+
   
